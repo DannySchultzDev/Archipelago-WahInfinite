@@ -41,9 +41,9 @@ class Difficulty(Choice):
     """
     What tricks will be factored into the game's logic.
     Intended means that if an item makes a level easier in any way, it is required for logic.
-    Simple means that easily skipable items will not be required for logic.
-    Advanced means that any skipable items will not be required for logic.
-    Glitched means that any skipable items including glitches will not be required for logic.
+    Simple means that easily skippable items will not be required for logic.
+    Advanced means that any skippable items will not be required for logic.
+    Glitched means that any skippable items including glitches will not be required for logic.
     """
 
     display_name = "Difficulty"
@@ -297,7 +297,7 @@ class DefaultItemGroups(Choice):
     """
     How items will be grouped together by default.
     To use Pop Blocks as an example:
-    Seperated item groups means Standard Pop Blocks and Galactic Pop Blocks will be added to the pool.
+    Separated item groups means Standard Pop Blocks and Galactic Pop Blocks will be added to the pool.
     Collecting each one will unlock its corresponding item.
     Progressive item groups means two Progressive Pop Blocks will be added to the pool.
     Collecting the first will unlock Standard Pop Blocks, and the second will unlock Galactic Pop Blocks.
@@ -318,10 +318,10 @@ class DefaultItemGroups(Choice):
 
 class DefaultExtraItems(Choice):
     """
-    Whether or not extra items are included by default.
+    Whether extra items are included by default.
     How these extra items are added is dependent on the item's grouping.
     To use Skull Rings as an example:
-    Seperated item groups will have two Yellow Skull Rings, and two Blue Skull Rings in the pool.
+    Separated item groups will have two Yellow Skull Rings, and two Blue Skull Rings in the pool.
     Collecting the first of each will let you stop the corresponding Skull Ring from moving.
     Collecting the second of each will neutralize the corresponding Skull Ring.
     Progressive item groups will add a third additional Progressive Skull Ring to the pool.

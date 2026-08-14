@@ -208,7 +208,7 @@ def create_first_rooms_entrance_rando_enabled(world: FantasticFistWorld, nodes: 
                 #The Library can never have secret exits since it's one room.
                 #If door rando does not pull rooms from other levels, the level must contain a secret exit if the entrance has a secret exit.
                 random_first_room: Node = first_rooms[world.random.randint(0, len(first_rooms) - 1)]
-        else:
+        elif world.options.paths == 0:
             while (world.options.door_rando == 2 or world.options.door_rando == 3) and [1, 3, 11, 19, 21, 30].__contains__(random_first_room.level_id):
                 #Make sure other levels don't use up levels with secret exits.
                 random_first_room: Node = first_rooms[world.random.randint(0, len(first_rooms) - 1)]

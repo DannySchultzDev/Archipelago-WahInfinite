@@ -1307,7 +1307,7 @@ ITEM_REQUIREMENTS = {
                                 None,
                                 None,
                                 None],
-    "The Scenic Route Level Clear": [HAS_YELLOW_SKULL_RINGS,
+    "The Scenic Route Level Clear": [(HAS_YELLOW_SKULL_RINGS),
                                      None,
                                      None,
                                      None],
@@ -1349,7 +1349,7 @@ ITEM_REQUIREMENTS = {
                              (HAS_YELLOW_SLIDING_BLOCKS & HAS_YELLOW_PUNCHAPPEAR_BLOCKS &
                               HAS_YELLOW_GORBS & HAS_YELLOW_SKULL_BLOCKS),
                              (HAS_YELLOW_SLIDING_BLOCKS & HAS_YELLOW_PUNCHAPPEAR_BLOCKS),
-                             (HAS_YELLOW_SLIDING_BLOCKS)],
+                             (HAS_YELLOW_SLIDING_BLOCKS | HAS_YELLOW_GORBS)],
     "Haunted Halls Room 2 Door": [(HAS_YELLOW_SLIDING_BLOCKS & HAS_YELLOW_PUNCHAPPEAR_BLOCKS & 
                                    HAS_YELLOW_SKULL_BLOCKS & HAS_YELLOW_GORBS),
                                   (HAS_YELLOW_SLIDING_BLOCKS & HAS_YELLOW_PUNCHAPPEAR_BLOCKS & 
