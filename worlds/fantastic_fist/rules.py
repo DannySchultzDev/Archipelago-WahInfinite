@@ -391,7 +391,7 @@ ITEM_REQUIREMENTS = {
                                             HAS_STANDARD_LAUNCHERS & HAS_ON_OFF_BLOCKS),
                                            (HAS_STANDARD_BLOCK_LAUNCHERS & HAS_WING_BLOCK_LAUNCHERS &
                                             HAS_STANDARD_LAUNCHERS & HAS_ON_OFF_BLOCKS),
-                                           (HAS_STANDARD_BLOCK_LAUNCHERS & HAS_WING_BLOCK_LAUNCHERS,
+                                           (HAS_STANDARD_BLOCK_LAUNCHERS & HAS_WING_BLOCK_LAUNCHERS &
                                             HAS_STANDARD_LAUNCHERS & HAS_ON_OFF_BLOCKS)],
     "The Caves Room 2 Door": [(HAS_STANDARD_BLOCK_LAUNCHERS & HAS_WING_BLOCK_LAUNCHERS),
                               (HAS_STANDARD_BLOCK_LAUNCHERS & HAS_WING_BLOCK_LAUNCHERS),
@@ -1568,7 +1568,7 @@ ITEM_REQUIREMENTS = {
                              HAS_YELLOW_VIVI_BLOCKS),
                             (HAS_YELLOW_PUNCHAPPEAR_BLOCKS & HAS_YELLOW_SKULL_BLOCKS &
                              HAS_RED_FIRE_RINGS & HAS_YELLOW_CRYSTAL_LAUNCHERS),
-                            (HAS_YELLOW_PUNCHAPPEAR_BLOCKS & HAS_RED_FIRE_RINGS,
+                            (HAS_YELLOW_PUNCHAPPEAR_BLOCKS & HAS_RED_FIRE_RINGS &
                              HAS_YELLOW_CRYSTAL_LAUNCHERS)],
     "Skullduggery Level Clear": [(HAS_YELLOW_PUNCHAPPEAR_BLOCKS & HAS_YELLOW_SKULL_BLOCKS &
                                   HAS_RED_FIRE_RINGS & HAS_YELLOW_SKULL_RINGS),
