@@ -1,0 +1,1 @@
+from .world import HorseMagnifierWorld as HorseMagnifierWorld
