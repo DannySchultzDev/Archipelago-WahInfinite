@@ -25,6 +25,16 @@ ITEM_NAME_TO_ID = {
     "Horse": 20,
 
     "Donkey": 30,
+    "Mule": 31,
+    "Camel": 32,
+    "Unicorn": 33,
+    "Seahorse": 34,
+    "Deer": 35,
+    "Pony": 36,
+    "Zebra": 37,
+
+    "Grenade Trap": 50,
+    "Jumpscare Trap": 51,
 }
 
 ID_TO_ITEM_NAME = {v: k for k, v in ITEM_NAME_TO_ID.items()}
@@ -50,10 +60,25 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Horse": ItemClassification.progression_deprioritized_skip_balancing,
 
     "Donkey": ItemClassification.filler,
+    "Mule": ItemClassification.filler,
+    "Camel": ItemClassification.filler,
+    "Unicorn": ItemClassification.filler,
+    "Seahorse": ItemClassification.filler,
+    "Deer": ItemClassification.filler,
+    "Pony": ItemClassification.filler,
+    "Zebra": ItemClassification.filler,
+
+    "Grenade Trap": ItemClassification.trap,
+    "Jumpscare Trap": ItemClassification.trap,
 }
 
 def get_random_filler_item_name(world: HorseMagnifierWorld) -> str:
-    return "Donkey"
+    if world.random.randint(0, 100) < world.options.trap_percentage:
+        if world.random.randint(0, 100) < world.options.grenade_percentage:
+            return "Grenade Trap"
+        else:
+            return "Jumpscare Trap"
+    return ID_TO_ITEM_NAME[world.random.randint(30, 37)]
 
 def create_item_with_correct_classification(world: HorseMagnifierWorld, name: str) -> HorseMagnifierItem:
     classification = DEFAULT_ITEM_CLASSIFICATIONS[name]
@@ -110,8 +135,3 @@ def create_all_items(world: HorseMagnifierWorld) -> None:
     itempool += [world.create_filler() for _ in range(needed_number_of_filler_items)]
 
     world.multiworld.itempool += itempool
-
-    #if world.options.starting_lens == 0:
-    #    world.multiworld.local_early_items[world.player]["Anti-Fisheye Lens"] = 1
-    #else:
-    #    world.multiworld.local_early_items[world.player]["Fisheye Lens"] = 1

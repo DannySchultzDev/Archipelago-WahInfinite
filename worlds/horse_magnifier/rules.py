@@ -25,15 +25,15 @@ APPLE = Has("Apple")
 SWATTER = Has("Horsefly Swatter")
 
 ITEM_REQUIREMENTS = {
-    "Level 1 Cleared": FISHEYE,
-    "Level 2 Cleared": FISHEYE,
-    "Level 3 Cleared": FISHEYE,
-    "Level 4 Cleared": FISHEYE & ANTI_FISHEYE,
-    "Level 5 Cleared": FISHEYE,
-    "Level 6 Cleared": FISHEYE & ANTI_FISHEYE,
-    "Level 7 Cleared": FISHEYE & ANTI_FISHEYE,
-    "Level 8 Cleared": FISHEYE & ANTI_FISHEYE,
-    "Level 9 Cleared": FISHEYE & ANTI_FISHEYE,
+    "Level 01 Cleared": FISHEYE,
+    "Level 02 Cleared": FISHEYE,
+    "Level 03 Cleared": FISHEYE,
+    "Level 04 Cleared": FISHEYE & ANTI_FISHEYE,
+    "Level 05 Cleared": FISHEYE,
+    "Level 06 Cleared": FISHEYE & ANTI_FISHEYE,
+    "Level 07 Cleared": FISHEYE & ANTI_FISHEYE,
+    "Level 08 Cleared": FISHEYE & ANTI_FISHEYE,
+    "Level 09 Cleared": FISHEYE & ANTI_FISHEYE,
     "Level 10 Cleared": FISHEYE & ANTI_FISHEYE,
     "Level 11 Cleared": FISHEYE & ANTI_FISHEYE,
     "Level 12 Cleared": FISHEYE,
@@ -79,15 +79,15 @@ ITEM_REQUIREMENTS = {
     "Level 52 Cleared": ANTI_FISHEYE & FLIP & SWIRL & REPLICATOR,
     "Level 53 Cleared": ANTI_FISHEYE & FLIP & REPLICATOR,
 
-    "Level 1 Perfected": FISHEYE,
-    "Level 2 Perfected": FISHEYE,
-    "Level 3 Perfected": FISHEYE,
-    "Level 4 Perfected": FISHEYE & ANTI_FISHEYE,
-    "Level 5 Perfected": FISHEYE,
-    "Level 6 Perfected": FISHEYE & ANTI_FISHEYE,
-    "Level 7 Perfected": FISHEYE & ANTI_FISHEYE,
-    "Level 8 Perfected": FISHEYE & ANTI_FISHEYE,
-    "Level 9 Perfected": FISHEYE & ANTI_FISHEYE,
+    "Level 01 Perfected": FISHEYE,
+    "Level 02 Perfected": FISHEYE,
+    "Level 03 Perfected": FISHEYE,
+    "Level 04 Perfected": FISHEYE & ANTI_FISHEYE,
+    "Level 05 Perfected": FISHEYE,
+    "Level 06 Perfected": FISHEYE & ANTI_FISHEYE,
+    "Level 07 Perfected": FISHEYE & ANTI_FISHEYE,
+    "Level 08 Perfected": FISHEYE & ANTI_FISHEYE,
+    "Level 09 Perfected": FISHEYE & ANTI_FISHEYE,
     "Level 10 Perfected": FISHEYE & ANTI_FISHEYE,
     "Level 11 Perfected": FISHEYE & ANTI_FISHEYE,
     "Level 12 Perfected": FISHEYE,
@@ -149,3 +149,5 @@ def set_all_rules(world: HorseMagnifierWorld):
     horse_req: int = int((world.options.goal_requirement / 100.0) * world.options.horse_amount)
     victory_rule: Rule = Has("Horse", count = horse_req) & FISHEYE & ANTI_FISHEYE & STRETCH & COMPRESS & SWIRL & REPLICATOR
     world.set_rule(world.get_location("Victory"), victory_rule)
+
+    world.set_completion_rule(Has("Victory"))

@@ -41,8 +41,9 @@ class HorseMagnifierWorld(World):
         options = self.options.as_dict(
             "deathlink",
             "perfect_accuracy",
+            "leniency",
             "horse_amount",
-            "goal_requirement"
+            "goal_requirement",
         )
 
         return options

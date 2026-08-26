@@ -2,11 +2,17 @@ from dataclasses import dataclass
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
-class Deathlink(Toggle):
+class Deathlink(Choice):
     """
-    When someone dies with deathlink, the current level gets reset.
+    When someone dies with deathlink, send either a grenade or jumpscare trap.
     """
     display_name = "Deathlink"
+
+    option_disabled = 0
+    option_grenade_trap = 1
+    option_jumpscare_trap = 2
+
+    default = option_disabled
 
 class PerfectAccuracy(Toggle):
     """
@@ -14,6 +20,19 @@ class PerfectAccuracy(Toggle):
     """
 
     display_name = "Perfect Accuracy"
+
+
+class Leniency(Range):
+    """
+    If Perfect Accuracy is enabled, how many pixels you can be away to still receive the check.
+    """
+
+    display_name = "Leniency"
+
+    range_start = 0
+    range_end = 20
+
+    default = 5
 
 class HorseAmount(Range):
     """
@@ -56,11 +75,42 @@ class StartingLens(Choice):
 
     default = option_fisheye
 
+class TrapPercentage(Range):
+    """
+    What percentage of filler items are replaced with traps.
+    """
+
+    display_name = "Trap Percentage"
+
+    range_start = 0
+    range_end = 100
+
+    default = 0
+
+
+class GrenadePercentage(Range):
+    """
+    What percentage of traps are grenade traps.
+    The rest of the traps will be jumpscare traps.
+
+    Grenade Traps reset the current level (they do not send a deathlink).
+    Jumpscare Traps are self-explanatory (they will occur even if the setting is off).
+    """
+
+    display_name = "Grenade Trap Percentage"
+
+    range_start = 0
+    range_end = 100
+
+    default = 0
 
 @dataclass
 class HorseMagnifierOptions(PerGameCommonOptions):
     deathlink: Deathlink
     perfect_accuracy: PerfectAccuracy
+    leniency: Leniency
     horse_amount: HorseAmount
     goal_requirement: GoalRequirement
     starting_lens: StartingLens
+    trap_percentage: TrapPercentage
+    grenade_percentage: GrenadePercentage
