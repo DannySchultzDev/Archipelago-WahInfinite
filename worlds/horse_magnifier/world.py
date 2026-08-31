@@ -21,6 +21,18 @@ class HorseMagnifierWorld(World):
 
     origin_region_name = "Menu"
 
+    ut_can_gen_without_yaml = True
+
+    def generate_early(self) -> None:
+        re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
+        if re_gen_passthrough and self.game in re_gen_passthrough:
+            # Get the passed through slot data from the real generation
+            slot_data: dict[str, Any] = re_gen_passthrough[self.game]
+
+            setattr(self.options, "perfect_accuracy", slot_data["perfect_accuracy"])
+            setattr(self.options, "horse_amount", slot_data["horse_amount"])
+            setattr(self.options, "goal_requirement", slot_data["goal_requirement"])
+
     def create_regions(self) -> None:
         regions.create_and_connect_regions(self)
         locations.create_all_locations(self)

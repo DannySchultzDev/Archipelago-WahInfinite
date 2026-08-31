@@ -32,6 +32,8 @@ ITEM_NAME_TO_ID = {
     "Deer": 35,
     "Pony": 36,
     "Zebra": 37,
+    "Centaur": 38,
+    "Kelpie": 39,
 
     "Grenade Trap": 50,
     "Jumpscare Trap": 51,
@@ -67,6 +69,8 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Deer": ItemClassification.filler,
     "Pony": ItemClassification.filler,
     "Zebra": ItemClassification.filler,
+    "Centaur": ItemClassification.filler,
+    "Kelpie": ItemClassification.filler,
 
     "Grenade Trap": ItemClassification.trap,
     "Jumpscare Trap": ItemClassification.trap,
@@ -78,7 +82,7 @@ def get_random_filler_item_name(world: HorseMagnifierWorld) -> str:
             return "Grenade Trap"
         else:
             return "Jumpscare Trap"
-    return ID_TO_ITEM_NAME[world.random.randint(30, 37)]
+    return ID_TO_ITEM_NAME[world.random.randint(30, 39)]
 
 def create_item_with_correct_classification(world: HorseMagnifierWorld, name: str) -> HorseMagnifierItem:
     classification = DEFAULT_ITEM_CLASSIFICATIONS[name]
