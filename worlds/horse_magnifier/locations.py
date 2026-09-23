@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from BaseClasses import ItemClassification, Location, Region
+from BaseClasses import Location
 
-from . import items, regions
+from . import items
 
 if TYPE_CHECKING:
     from .world import HorseMagnifierWorld

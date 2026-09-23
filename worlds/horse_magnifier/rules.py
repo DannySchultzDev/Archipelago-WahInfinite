@@ -1,12 +1,8 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
-from . import regions
-
-from BaseClasses import Location, Entrance
-from rule_builder.options import OptionFilter
-from rule_builder.rules import Has, HasAll, Rule
+from BaseClasses import Location
+from rule_builder.rules import Has, Rule
 
 if TYPE_CHECKING:
     from .world import HorseMagnifierWorld

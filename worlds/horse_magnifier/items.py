@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from BaseClasses import Item, ItemClassification
-from ..ladx.LADXR import itempool
 
 if TYPE_CHECKING:
     from .world import HorseMagnifierWorld
