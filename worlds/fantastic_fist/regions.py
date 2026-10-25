@@ -162,7 +162,9 @@ def create_world_map(world: FantasticFistWorld, nodes: list[Node], edges: list[E
     edges.append(Edge(new_nodes[39], new_nodes[34], True))
 
 def create_first_rooms(world: FantasticFistWorld, nodes: list[Node], edges: list[Edge]):
-    if world.options.entrance_rando:
+    if world.randomized_entrances:
+        create_first_rooms_pregen(world, nodes, edges)
+    elif world.options.entrance_rando:
         create_first_rooms_entrance_rando_enabled(world, nodes, edges)
     else:
         create_first_rooms_entrance_rando_disabled(world, nodes, edges)
@@ -223,6 +225,12 @@ def create_first_rooms_entrance_rando_disabled(world: FantasticFistWorld, nodes:
         nodes.append(first_room_node)
         edges.append(Edge(get_node_from_name(nodes, ID_TO_LEVEL[level_index].level_id), first_room_node, False))
 
+def create_first_rooms_pregen(world: FantasticFistWorld, nodes: list[Node], edges: list[Edge]):
+    for level_index in ID_TO_LEVEL:
+        first_room_node: Node = Node(append_room_number(ID_TO_LEVEL[level_index].level_name, 1), "First Room", level_index)
+        nodes.append(first_room_node)
+    edges.extend(world.randomized_entrances)
+
 def create_rooms(world: FantasticFistWorld, nodes: list[Node], edges: list[Edge]):
     rooms: list[Node] = []
     for level_index in ID_TO_LEVEL:
@@ -239,7 +247,9 @@ def create_rooms(world: FantasticFistWorld, nodes: list[Node], edges: list[Edge]
                 rooms.append(room)
                 nodes.append(room)
 
-    if world.options.door_rando == 0:
+    if world.randomized_doors:
+        edges.extend(world.randomized_doors)
+    elif world.options.door_rando == 0:
         connect_rooms_door_rando_full_balanced(world, nodes, rooms, edges, False)
     elif world.options.door_rando == 1:
         connect_rooms_door_rando_full_balanced(world, nodes, rooms, edges, True)
@@ -663,6 +673,8 @@ def connect_regions(world: FantasticFistWorld, edges: list[Edge]):
     split_level_id1: int = 1
     split_level_id2: int = 1
 
+    pregen = len(world.randomized_entrances) != 0
+
     for edge in edges:
         start_node: Node = edge.start_node
         start_region: Region = world.get_region(start_node.node_name)
@@ -675,10 +687,14 @@ def connect_regions(world: FantasticFistWorld, edges: list[Edge]):
                 # Only paths between levels are double sided (for logic purposes)
                 end_region.connect(start_region, end_node.node_name + " to " + start_node.node_name)
         elif start_node.node_type == "Level" and end_node.node_type != "Level":
-            world.randomized_entrances.append(edge)
+            if not pregen:
+                world.randomized_entrances.append(edge)
+
             start_region.connect(end_region, start_node.node_name + " Entrance")
         else:
-            world.randomized_doors.append(edge)
+            if not pregen:
+                world.randomized_doors.append(edge)
+
             if end_node.node_name == "Verticality Room 2B":
                 start_region.connect(end_region, start_node.node_name + " Side Door")
             elif end_node.node_name == "The Library Room 1B":
@@ -697,10 +713,10 @@ def connect_regions(world: FantasticFistWorld, edges: list[Edge]):
                 start_region.connect(end_region, start_node.node_name + " Boss Heart 2")
             elif end_node.node_name == "Galactic Central Point Boss Arena 37":
                 start_region.connect(end_region, start_node.node_name + " Boss Heart 3")
-            elif start_node.node_type == "Split Room" and start_node.node_name == append_room_number(ID_TO_LEVEL[27].level_name, 3):
+            elif start_node.node_name == append_room_number(ID_TO_LEVEL[27].level_name, 3):
                 start_region.connect(end_region, start_node.node_name + " Door " + str(split_level_id1))
                 split_level_id1 += 1
-            elif start_node.node_type == "Split Room" and start_node.node_name == append_room_number(ID_TO_LEVEL[27].level_name, 5):
+            elif start_node.node_name == append_room_number(ID_TO_LEVEL[27].level_name, 5):
                 start_region.connect(end_region, start_node.node_name + " Door " + str(split_level_id2))
                 split_level_id2 += 1
             else:

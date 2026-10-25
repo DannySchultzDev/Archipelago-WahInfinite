@@ -1300,9 +1300,7 @@ ITEM_REQUIREMENTS = {
                                      (HAS_BLUE_FIRE_RINGS & HAS_GLASS_BLOCKS &
                                       HAS_BLUE_PUNCHAPPEAR_BLOCKS & HAS_BLUE_SWITCHES &
                                       HAS_STANDARD_POP_BLOCKS & HAS_BLUE_CRYSTAL_LAUNCHERS),
-                                     (HAS_BLUE_FIRE_RINGS & (HAS_STANDARD_POP_BLOCKS | (
-                                      HAS_BLUE_PUNCHAPPEAR_BLOCKS & HAS_BLUE_SWITCHES)) &
-                                      HAS_BLUE_CRYSTAL_LAUNCHERS)],
+                                     (HAS_BLUE_FIRE_RINGS)],
     "The Scenic Route Coin 1": [(HAS_YELLOW_SKULL_RINGS),
                                 None,
                                 None,
