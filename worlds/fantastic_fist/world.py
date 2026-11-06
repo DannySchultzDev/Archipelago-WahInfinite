@@ -192,7 +192,7 @@ class FantasticFistWorld(World):
 
     def write_spoiler(self, spoiler_handle: TextIO) -> None:
         spoiler_handle.write("True Coin Amount: " + str(self.true_coin_amount) + "\n")
-        spoiler_handle.write("Secret Exit Coin Amount Requirments: [")
+        spoiler_handle.write("Secret Exit Coin Amount Requirements: [")
         for req in range(len(self.secret_coin_requirements)):
             spoiler_handle.write(str(self.secret_coin_requirements[req]))
             if req == 6:
@@ -200,7 +200,7 @@ class FantasticFistWorld(World):
             else:
                 spoiler_handle.write(", ")
 
-        spoiler_handle.write("Boss Level Coin Amount Requirments: [")
+        spoiler_handle.write("Boss Level Coin Amount Requirements: [")
         for req in range(len(self.boss_coin_requirements)):
             spoiler_handle.write(str(self.boss_coin_requirements[req]))
             if req == 4:
