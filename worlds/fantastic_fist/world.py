@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TextIO
+from typing import Any, TextIO, Dict
 
 from worlds.AutoWorld import World
 
@@ -31,10 +31,14 @@ class FantasticFistWorld(World):
     boss_coin_requirements: list[int] = []
 
     ut_can_gen_without_yaml = True
+    is_ut_gen = False
+    location_id_to_alias = {}
 
     def generate_early(self) -> None:
         re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
         if re_gen_passthrough and self.game in re_gen_passthrough:
+            self.is_ut_gen = True
+
             slot_data: dict[str, Any] = re_gen_passthrough[self.game]
 
             for i in range(0, len(slot_data["entrances"]), 2):
@@ -99,6 +103,8 @@ class FantasticFistWorld(World):
     def create_regions(self) -> None:
         regions.create_and_connect_regions(self)
         locations.create_all_locations(self)
+        if self.is_ut_gen:
+            self.add_alias()
 
     def set_rules(self) -> None:
         rules.set_all_rules(self)
@@ -227,3 +233,62 @@ class FantasticFistWorld(World):
                     next_node_name = edges[1].end_node.node_name
                 edges = regions.get_edge_from_start_node_name(self.randomized_doors, next_node_name)
             spoiler_handle.write("\n")
+
+    def extend_hint_information(self, hint_data: Dict[int, Dict[int, str]]) -> None:
+        # Room Name -> Level ID
+        region_dict: Dict[str, str] = {}
+        for level_id in regions.ID_TO_LEVEL:
+            level: regions.Level = regions.ID_TO_LEVEL[level_id]
+            edges: list[regions.Edge] = regions.get_edge_from_start_node_name(self.randomized_entrances, level.level_id)
+            while len(edges) > 0:
+                region_dict[edges[0].end_node.node_name] = level.level_id
+                skipped_initial: bool = False
+                for edge in edges:
+                    if not skipped_initial:
+                        skipped_initial = True
+                        continue
+                    region_dict[edge.end_node.node_name] = level.level_id
+                next_node_name: str = edges[0].end_node.node_name
+                if next_node_name == "Verticality Room 2B" or next_node_name == "The Five Mile Spire Room 7B":
+                    # Side rooms don't have additional pathing
+                    next_node_name = edges[1].end_node.node_name
+                edges = regions.get_edge_from_start_node_name(self.randomized_doors, next_node_name)
+
+        region_dict["Menu"] = "Menu"
+        region_dict["Universal Bearing Collectible Nyctophobia"] = "5-3"
+        region_dict["Universal Bearing Collectible Various Explosives"] = "5-3"
+        region_dict["Universal Bearing Collectible Introduction"] = "5-3"
+
+        level_hint_data: Dict[int, str] = {}
+        for location_name, location_id in locations.LOCATION_NAME_TO_ID.items():
+            level_hint_data[location_id] = region_dict[locations.LOCATION_NAME_TO_REGION[location_name]]
+
+        hint_data[self.player] = level_hint_data
+
+    def add_alias(self):
+        # Room Name -> Level ID
+        region_dict: Dict[str, str] = {}
+        for level_id in regions.ID_TO_LEVEL:
+            level: regions.Level = regions.ID_TO_LEVEL[level_id]
+            edges: list[regions.Edge] = regions.get_edge_from_start_node_name(self.randomized_entrances, level.level_id)
+            while len(edges) > 0:
+                region_dict[edges[0].end_node.node_name] = level.level_id
+                skipped_initial: bool = False
+                for edge in edges:
+                    if not skipped_initial:
+                        skipped_initial = True
+                        continue
+                    region_dict[edge.end_node.node_name] = level.level_id
+                next_node_name: str = edges[0].end_node.node_name
+                if next_node_name == "Verticality Room 2B" or next_node_name == "The Five Mile Spire Room 7B":
+                    # Side rooms don't have additional pathing
+                    next_node_name = edges[1].end_node.node_name
+                edges = regions.get_edge_from_start_node_name(self.randomized_doors, next_node_name)
+
+        region_dict["Menu"] = "Menu"
+        region_dict["Universal Bearing Collectible Nyctophobia"] = "5-3"
+        region_dict["Universal Bearing Collectible Various Explosives"] = "5-3"
+        region_dict["Universal Bearing Collectible Introduction"] = "5-3"
+
+        for location_name, location_id in locations.LOCATION_NAME_TO_ID.items():
+            self.location_id_to_alias[location_id] = region_dict[locations.LOCATION_NAME_TO_REGION[location_name]]
