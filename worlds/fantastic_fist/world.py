@@ -47,35 +47,36 @@ class FantasticFistWorld(World):
             for j in range(0, len(slot_data["doors"]), 2):
                self.randomized_doors.append(regions.Edge(regions.Node(slot_data["doors"][j], "Pregen", -1), regions.Node(slot_data["doors"][j + 1], "Pregen", -1), False))
 
-            setattr(self.options, "deathlink", slot_data["deathlink"])
-            setattr(self.options, "deathlink_amnesty", slot_data["deathlink_amnesty"])
-            setattr(self.options, "goal", slot_data["goal"])
-            setattr(self.options, "difficulty", slot_data["difficulty"])
-            setattr(self.options, "open_world", slot_data["open_world"])
-            setattr(self.options, "paths", slot_data["paths"])
-            setattr(self.options, "entrance_rando", slot_data["entrance_rando"])
-            setattr(self.options, "door_rando", slot_data["door_rando"])
-            setattr(self.options, "roomsanity", slot_data["roomsanity"])
-            setattr(self.options, "checkpointsanity", slot_data["checkpointsanity"])
+            self.options.deathlink.value = slot_data["deathlink"]
+            self.options.deathlink_amnesty.value = slot_data["deathlink_amnesty"]
+            self.options.goal.value = slot_data["goal"]
+            self.options.difficulty.value = slot_data["difficulty"]
+            self.options.open_world.value = slot_data["open_world"]
+            self.options.paths.value = slot_data["paths"]
+            self.options.entrance_rando.value = slot_data["entrance_rando"]
+            self.options.door_rando.value = slot_data["door_rando"]
+            self.options.roomsanity.value = slot_data["roomsanity"]
+            self.options.checkpointsanity.value = slot_data["checkpointsanity"]
             self.options.max_coin_amount.value = slot_data["max_coin_amount"]
-            setattr(self.options, "first_secret_exit_coin_requirement", slot_data["first_secret_exit_coin_requirement"])
-            setattr(self.options, "second_secret_exit_coin_requirement", slot_data["second_secret_exit_coin_requirement"])
-            setattr(self.options, "third_secret_exit_coin_requirement", slot_data["third_secret_exit_coin_requirement"])
-            setattr(self.options, "fourth_secret_exit_coin_requirement", slot_data["fourth_secret_exit_coin_requirement"])
-            setattr(self.options, "fifth_secret_exit_coin_requirement", slot_data["fifth_secret_exit_coin_requirement"])
-            setattr(self.options, "sixth_secret_exit_coin_requirement", slot_data["sixth_secret_exit_coin_requirement"])
-            setattr(self.options, "seventh_secret_exit_coin_requirement", slot_data["seventh_secret_exit_coin_requirement"])
-            setattr(self.options, "first_boss_coin_requirement", slot_data["first_boss_coin_requirement"])
-            setattr(self.options, "second_boss_coin_requirement", slot_data["second_boss_coin_requirement"])
-            setattr(self.options, "third_boss_coin_requirement", slot_data["third_boss_coin_requirement"])
-            setattr(self.options, "fourth_boss_coin_requirement", slot_data["fourth_boss_coin_requirement"])
-            setattr(self.options, "fifth_boss_coin_requirement", slot_data["fifth_boss_coin_requirement"])
-            setattr(self.options, "default_item_groups", slot_data["default_item_groups"])
-            setattr(self.options, "default_extra_items", slot_data["default_extra_items"])
+            self.options.first_secret_exit_coin_requirement.value = slot_data["first_secret_exit_coin_requirement"]
+            self.options.second_secret_exit_coin_requirement.value = slot_data["second_secret_exit_coin_requirement"]
+            self.options.third_secret_exit_coin_requirement.value = slot_data["third_secret_exit_coin_requirement"]
+            self.options.fourth_secret_exit_coin_requirement.value = slot_data["fourth_secret_exit_coin_requirement"]
+            self.options.fifth_secret_exit_coin_requirement.value = slot_data["fifth_secret_exit_coin_requirement"]
+            self.options.sixth_secret_exit_coin_requirement.value = slot_data["sixth_secret_exit_coin_requirement"]
+            self.options.seventh_secret_exit_coin_requirement.value = slot_data["seventh_secret_exit_coin_requirement"]
+            self.options.first_boss_coin_requirement.value = slot_data["first_boss_coin_requirement"]
+            self.options.second_boss_coin_requirement.value = slot_data["second_boss_coin_requirement"]
+            self.options.third_boss_coin_requirement.value = slot_data["third_boss_coin_requirement"]
+            self.options.fourth_boss_coin_requirement.value = slot_data["fourth_boss_coin_requirement"]
+            self.options.fifth_boss_coin_requirement.value = slot_data["fifth_boss_coin_requirement"]
+            self.options.default_item_groups.value = slot_data["default_item_groups"]
+            self.options.default_extra_items.value = slot_data["default_extra_items"]
             self.options.destructible_blocks.value = slot_data["destructible_blocks"]
             self.options.physics_blocks.value = slot_data["physics_blocks"]
             self.options.sliding_blocks.value = slot_data["sliding_blocks"]
             self.options.boss_blocks.value = slot_data["boss_blocks"]
+            self.options.boss_block_groups.value = slot_data["boss_block_groups"]
             self.options.pop_blocks.value = slot_data["pop_blocks"]
             self.options.bumpers.value = slot_data["bumpers"]
             self.options.switches.value = slot_data["switches"]
@@ -96,6 +97,7 @@ class FantasticFistWorld(World):
             self.options.hive_blocks.value = slot_data["hive_blocks"]
             self.options.keys.value = slot_data["keys"]
             self.options.gravity_items.value = slot_data["gravity_items"]
+            self.options.gravity_groups.value = slot_data["gravity_groups"]
             self.options.lifts.value = slot_data["lifts"]
             self.options.semisolids.value = slot_data["semisolids"]
             self.options.vivis_flashlight.value = slot_data["vivis_flashlight"]
@@ -149,6 +151,7 @@ class FantasticFistWorld(World):
             "physics_blocks",
             "sliding_blocks",
             "boss_blocks",
+            "boss_block_groups",
             "pop_blocks",
             "bumpers",
             "switches",
@@ -170,6 +173,7 @@ class FantasticFistWorld(World):
             "hive_blocks",
             "keys",
             "gravity_items",
+            "gravity_groups",
             "lifts",
             "semisolids",
             "vivis_flashlight"

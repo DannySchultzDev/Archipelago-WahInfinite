@@ -369,9 +369,11 @@ def connect_rooms_door_rando_full_balanced(world: FantasticFistWorld, nodes: lis
     for _ in range(4):
         standard_rooms: list[Node] = get_nodes_from_type(rooms, "Room")
         split_path_room: Node = standard_rooms[world.random.randint(0, len(standard_rooms) - 1)]
-        while vanilla_paths and (split_path_room.node_name == append_room_number(ID_TO_LEVEL[1].level_name, 2) or
+        while (vanilla_paths and (split_path_room.node_name == append_room_number(ID_TO_LEVEL[1].level_name, 2) or
                               split_path_room.node_name == append_room_number(ID_TO_LEVEL[3].level_name, 2) or
-                              split_path_room.node_name == append_room_number(ID_TO_LEVEL[19].level_name, 4)):
+                              split_path_room.node_name == append_room_number(ID_TO_LEVEL[19].level_name, 4))) or (
+                split_path_room.node_name == append_room_number(ID_TO_LEVEL[36].level_name, 7) or
+                split_path_room.node_name == append_room_number(ID_TO_LEVEL[3].level_name, 2)):
             split_path_room: Node = standard_rooms[world.random.randint(0, len(standard_rooms) - 1)]
         throne_room_split_path_rooms.append(split_path_room)
         rooms.remove(split_path_room)
@@ -421,7 +423,7 @@ def connect_rooms_door_rando_full_balanced(world: FantasticFistWorld, nodes: lis
 
         elif balanced:
             room_size = 1
-            if (room.node_type == "Split Room"):
+            if room.node_type == "Split Room":
                 room_size = 3
             elif room.node_name == append_room_number(ID_TO_LEVEL[3].level_name, 2) or room.node_name == append_room_number(ID_TO_LEVEL[36].level_name, 7):
                 room_size = 2

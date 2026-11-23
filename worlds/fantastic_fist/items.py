@@ -33,12 +33,14 @@ ITEM_NAME_TO_ID = {
 
     "Boss Blocks": 30,
     "Progressive Boss Blocks": 31,
-    "Standard Star Blocks": 32,
-    "Yellow Star Blocks": 33,
-    "Blue Star Blocks": 34,
-    "Standard Heart Blocks": 35,
-    "Sliding Heart Blocks": 36,
-    "Delayed Heart Blocks": 37,
+    "Star Blocks": 32,
+    "Standard Star Blocks": 33,
+    "Yellow Star Blocks": 34,
+    "Blue Star Blocks": 35,
+    "Heart Blocks": 36,
+    "Standard Heart Blocks": 37,
+    "Sliding Heart Blocks": 38,
+    "Delayed Heart Blocks": 39,
 
     "Pop Blocks": 40,
     "Progressive Pop Blocks": 41,
@@ -96,7 +98,7 @@ ITEM_NAME_TO_ID = {
     "Ice Block Launchers": 125,
     "Yellow Block Launchers": 126,
     "Blue Block Launchers": 127,
-    "Inverted Block Launchers": 128,
+    "Honey Block Launchers": 128,
     "Galactic Block Launchers": 129,
     "Fire Block Launchers": 130,
 
@@ -147,50 +149,54 @@ ITEM_NAME_TO_ID = {
     "Standard Key Blocks": 202,
     "Key Quartets": 203,
     "Ice Key Blocks": 204,
-    "Inverted Key Blocks": 205,
+    "Honey Key Blocks": 205,
 
     "Gravity Items": 210,
     "Progressive Gravity Items": 211,
-    "Up Gravity Flippers": 212,
-    "Down Gravity Flippers": 213,
-    "Up Gravity Fields": 214,
-    "Down Gravity Fields": 215,
-    "Up Water": 216,
-    "Down Water": 217,
-    "Gravity Fists": 218,
-    "Gravity Anchors": 219,
+    "Gravity Orbs": 212,
+    "Honey Orbs": 213,
+    "Water Orbs": 214,
+    "Quatrefoils": 215,
+    "Red Quatrefoils": 216,
+    "Green Quatrefoils": 217,
+    "Liquids": 218,
+    "Honey": 219,
+    "Water": 220,
+    "Gravity Fists": 221,
+    "Gravity Anchors": 222,
 
-    "Lifts": 220,
-    "Progressive Lifts": 221,
-    "Arrow Lifts": 222,
-    "Yellow Lifts": 223,
-    "Hive Lifts": 224,
+    "Lifts": 230,
+    "Progressive Lifts": 231,
+    "Arrow Lifts": 232,
+    "Yellow Lifts": 233,
+    "Hive Lifts": 234,
 
-    "Semisolids": 230,
-    "Progressive Semisolids": 231,
-    "Standard Semisolids": 232,
-    "Inverted Semisolids": 233,
-    "Toggle Semisolids": 234,
+    "Semisolids": 240,
+    "Progressive Semisolids": 241,
+    "Green Semisolids": 242,
+    "Red Semisolids": 243,
+    "Toggle Semisolids": 244,
 
-    "On Off Blocks": 240,
-    "Timer Buttons": 241,
-    "Toggle Flowers": 242,
-    "Tethers": 243,
-    "Icicles": 244,
-    "Glass Blocks": 245,
-    "Vivi's Flashlight": 246,
-    "Thermals": 247,
-    "Golf Ball": 248,
-    "Golf Cart": 249,
-    "Falling Crystals": 250,
-    "Grab Blocks": 251,
-    "Mirrors": 252,
-    "Barrels": 253,
-    "Pillars": 254,
-    "Yellow Spin Blocks": 255,
-    "Trees": 256,
+    "On Off Blocks": 250,
+    "Timer Buttons": 251,
+    "Briarbrush Flowers": 252,
+    "Tethers": 253,
+    "Icicles": 254,
+    "Glass Blocks": 255,
+    "Vivi's Flashlight": 256,
+    "Thermals": 257,
+    "Golf Ball": 258,
+    "Golf Cart": 259,
+    "Falling Crystals": 260,
+    "Grab Blocks": 261,
+    "Mirrors": 262,
+    "Barrels": 263,
+    "Pillars": 264,
+    "Yellow Spin Blocks": 265,
+    "Trees": 266,
 
-    "Coin": 260,
+    "Coin": 270,
+    "Extra Coin": 271,
 
     "Progressive Standard Path": 300,
     "Progressive Secret Path": 301,
@@ -251,7 +257,7 @@ ITEM_NAME_TO_ID = {
     
     "1-1 Home Exit Path": 370,
 
-    "Nothing": 400
+    "Chocolate Coin": 400
 }
 
 ID_TO_ITEM_NAME = {v: k for k, v in ITEM_NAME_TO_ID.items()}
@@ -282,9 +288,11 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
 
     "Boss Blocks": ItemClassification.progression,
     "Progressive Boss Blocks": ItemClassification.progression,
+    "Star Blocks": ItemClassification.progression,
     "Standard Star Blocks": ItemClassification.progression,
     "Yellow Star Blocks": ItemClassification.progression,
     "Blue Star Blocks": ItemClassification.progression,
+    "Heart Blocks": ItemClassification.progression,
     "Standard Heart Blocks": ItemClassification.progression,
     "Sliding Heart Blocks": ItemClassification.progression,
     "Delayed Heart Blocks": ItemClassification.progression,
@@ -345,7 +353,7 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Ice Block Launchers": ItemClassification.progression,
     "Yellow Block Launchers": ItemClassification.progression,
     "Blue Block Launchers": ItemClassification.progression,
-    "Inverted Block Launchers": ItemClassification.progression,
+    "Honey Block Launchers": ItemClassification.progression,
     "Galactic Block Launchers": ItemClassification.progression,
     "Fire Block Launchers": ItemClassification.progression,
 
@@ -396,16 +404,19 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Standard Key Blocks": ItemClassification.progression,
     "Key Quartets": ItemClassification.progression,
     "Ice Key Blocks": ItemClassification.progression,
-    "Inverted Key Blocks": ItemClassification.progression,
+    "Honey Key Blocks": ItemClassification.progression,
 
     "Gravity Items": ItemClassification.progression,
     "Progressive Gravity Items": ItemClassification.progression,
-    "Up Gravity Flippers": ItemClassification.progression,
-    "Down Gravity Flippers": ItemClassification.progression,
-    "Up Gravity Fields": ItemClassification.progression,
-    "Down Gravity Fields": ItemClassification.progression,
-    "Up Water": ItemClassification.progression,
-    "Down Water": ItemClassification.progression,
+    "Gravity Orbs": ItemClassification.progression,
+    "Honey Orbs": ItemClassification.progression,
+    "Water Orbs": ItemClassification.progression,
+    "Quatrefoils": ItemClassification.progression,
+    "Red Quatrefoils": ItemClassification.progression,
+    "Green Quatrefoils": ItemClassification.progression,
+    "Liquids": ItemClassification.progression,
+    "Honey": ItemClassification.progression,
+    "Water": ItemClassification.progression,
     "Gravity Fists": ItemClassification.progression,
     "Gravity Anchors": ItemClassification.progression,
 
@@ -417,13 +428,13 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
 
     "Semisolids": ItemClassification.progression,
     "Progressive Semisolids": ItemClassification.progression,
-    "Standard Semisolids": ItemClassification.progression,
-    "Inverted Semisolids": ItemClassification.progression,
+    "Green Semisolids": ItemClassification.progression,
+    "Red Semisolids": ItemClassification.progression,
     "Toggle Semisolids": ItemClassification.progression,
 
     "On Off Blocks": ItemClassification.progression,
     "Timer Buttons": ItemClassification.progression,
-    "Toggle Flowers": ItemClassification.progression,
+    "Briarbrush Flowers": ItemClassification.progression,
     "Tethers": ItemClassification.progression,
     "Icicles": ItemClassification.progression,
     "Glass Blocks": ItemClassification.progression,
@@ -440,6 +451,7 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Trees": ItemClassification.progression,
 
     "Coin": ItemClassification.progression_deprioritized_skip_balancing,
+    "Extra Coin": ItemClassification.useful,
 
     "Progressive Standard Path": ItemClassification.progression,
     "Progressive Secret Path": ItemClassification.progression,
@@ -500,14 +512,14 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     
     "1-1 Home Exit Path": ItemClassification.progression,
 
-    "Nothing": ItemClassification.filler
+    "Chocolate Coin": ItemClassification.filler
 }
 
 class FantasticFistItem(Item):
     game = "Fantastic Fist"
 
 def get_random_filler_item_name(world: FantasticFistWorld) -> str:
-    return "Nothing"
+    return "Chocolate Coin"
 
 def create_item_with_correct_classification(world: FantasticFistWorld, name: str) -> FantasticFistItem:
     classification = DEFAULT_ITEM_CLASSIFICATIONS[name]
@@ -519,7 +531,7 @@ def create_all_items(world: FantasticFistWorld) -> None:
     itempool: list[Item] = [
         world.create_item("On Off Blocks"),
         world.create_item("Timer Buttons"),
-        world.create_item("Toggle Flowers"),
+        world.create_item("Briarbrush Flowers"),
         world.create_item("Tethers"),
         world.create_item("Icicles"),
         world.create_item("Glass Blocks"),
@@ -538,7 +550,7 @@ def create_all_items(world: FantasticFistWorld) -> None:
     create_item_group(world, itempool, 1, 3, world.options.destructible_blocks.value, False)
     create_item_group(world, itempool, 10, 6, world.options.physics_blocks.value, False)
     create_item_group(world, itempool, 20, 5, world.options.sliding_blocks.value, False)
-    create_item_group(world, itempool, 30, 6, world.options.boss_blocks.value, False)
+    create_boss_blocks(world, itempool)
     create_item_group(world, itempool, 40, 2, world.options.pop_blocks.value, False)
     create_item_group(world, itempool, 50, 4, world.options.bumpers.value, False)
     create_item_group(world, itempool, 60, 2, world.options.switches.value, False)
@@ -559,9 +571,9 @@ def create_all_items(world: FantasticFistWorld) -> None:
     create_item_group(world, itempool, 180, 3, world.options.bombs.value, False)
     create_item_group(world, itempool, 190, 2, world.options.hive_blocks.value, False)
     create_item_group(world, itempool, 200, 4, world.options.keys.value, False)
-    create_item_group(world, itempool, 210, 8, world.options.gravity_items.value, False)
-    create_item_group(world, itempool, 220, 3, world.options.lifts.value, False)
-    create_item_group(world, itempool, 230, 3, world.options.semisolids.value, False)
+    create_gravity_items(world, itempool)
+    create_item_group(world, itempool, 230, 3, world.options.lifts.value, False)
+    create_item_group(world, itempool, 240, 3, world.options.semisolids.value, False)
 
     if get_extra(world, world.options.vivis_flashlight.value):
         itempool.append(world.create_item("Vivi's Flashlight"))
@@ -690,8 +702,6 @@ def create_all_items(world: FantasticFistWorld) -> None:
     if coin_amt > needed_number_of_filler_items:
         coin_amt = needed_number_of_filler_items
 
-    itempool += [world.create_item("Coin") for _ in range(coin_amt)]
-
     world.true_coin_amount = coin_amt
     world.secret_coin_requirements.append(int(coin_amt * world.options.first_secret_exit_coin_requirement / 100))
     world.secret_coin_requirements.append(int(coin_amt * world.options.second_secret_exit_coin_requirement / 100))
@@ -706,6 +716,35 @@ def create_all_items(world: FantasticFistWorld) -> None:
     world.boss_coin_requirements.append(int(coin_amt * world.options.fourth_boss_coin_requirement / 100))
     world.boss_coin_requirements.append(int(coin_amt * world.options.fifth_boss_coin_requirement / 100))
 
+    highest_req: int = world.options.first_secret_exit_coin_requirement.value
+    if world.options.second_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.second_secret_exit_coin_requirement.value
+    if world.options.third_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.third_secret_exit_coin_requirement.value
+    if world.options.fourth_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.fourth_secret_exit_coin_requirement.value
+    if world.options.fifth_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.fifth_secret_exit_coin_requirement.value
+    if world.options.sixth_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.sixth_secret_exit_coin_requirement.value
+    if world.options.seventh_secret_exit_coin_requirement.value > highest_req:
+        highest_req = world.options.seventh_secret_exit_coin_requirement.value
+    if world.options.first_boss_coin_requirement.value > highest_req:
+        highest_req = world.options.first_boss_coin_requirement.value
+    if world.options.second_boss_coin_requirement.value > highest_req:
+        highest_req = world.options.second_boss_coin_requirement.value
+    if world.options.third_boss_coin_requirement.value > highest_req:
+        highest_req = world.options.third_boss_coin_requirement.value
+    if world.options.fourth_boss_coin_requirement.value > highest_req:
+        highest_req = world.options.fourth_boss_coin_requirement.value
+    if world.options.fifth_boss_coin_requirement.value > highest_req:
+        highest_req = world.options.fifth_boss_coin_requirement.value
+
+    num_real_coins = int(coin_amt * highest_req / 100)
+
+    itempool += [world.create_item("Coin") for _ in range(num_real_coins)]
+    itempool += [world.create_item("Extra Coin") for _ in range(coin_amt - num_real_coins)]
+
     needed_number_of_filler_items -= coin_amt
 
     itempool += [world.create_filler() for _ in range(needed_number_of_filler_items)]
@@ -714,7 +753,7 @@ def create_all_items(world: FantasticFistWorld) -> None:
 
 def create_item_group(world: FantasticFistWorld, itempool: list[Item], start_id: int, choice_amt: int, option_selected: int, include_extra: bool) -> None:
     if option_selected == 0:
-        option_selected = world.options.default_item_groups
+        option_selected = world.options.default_item_groups.value
 
     if option_selected == 1:
         # The item group is separated.
@@ -742,3 +781,67 @@ def get_extra(world: FantasticFistWorld, option_selected: int) -> bool:
         option_selected = world.options.default_extra_items
 
     return option_selected == 1
+
+def create_boss_blocks(world:FantasticFistWorld, itempool: list[Item]):
+    option_selected: int = world.options.boss_blocks.value
+    if option_selected == 0:
+        option_selected = world.options.default_item_groups.value
+
+    if option_selected == 1:
+        # Boss blocks are separated.
+        if world.options.boss_block_groups.value:
+            itempool.append(world.create_item("Star Blocks"))
+            itempool.append(world.create_item("Heart Blocks"))
+        else:
+            itempool.append(world.create_item("Standard Star Blocks"))
+            itempool.append(world.create_item("Yellow Star Blocks"))
+            itempool.append(world.create_item("Blue Star Blocks"))
+            itempool.append(world.create_item("Standard Heart Blocks"))
+            itempool.append(world.create_item("Sliding Heart Blocks"))
+            itempool.append(world.create_item("Delayed Heart Blocks"))
+    elif option_selected == 2:
+        # Boss blocks are progressive.
+        if world.options.boss_block_groups.value:
+            itempool += [world.create_item("Progressive Boss Blocks") for _ in range(2)]
+        else:
+            itempool += [world.create_item("Progressive Boss Blocks") for _ in range(6)]
+    elif option_selected == 3:
+        # Boss blocks are grouped.
+        itempool.append(world.create_item("Boss Blocks"))
+    elif option_selected == 4:
+        # Boss blocks are precollected.
+        world.push_precollected(world.create_item("Boss Blocks"))
+
+def create_gravity_items(world:FantasticFistWorld, itempool: list[Item]):
+    option_selected: int = world.options.gravity_items.value
+    if option_selected == 0:
+        option_selected = world.options.default_item_groups.value
+
+    if option_selected == 1:
+        # Gravity items are separated.
+        if world.options.gravity_groups.value:
+            itempool.append(world.create_item("Gravity Orbs"))
+            itempool.append(world.create_item("Quatrefoils"))
+            itempool.append(world.create_item("Liquids"))
+        else:
+            itempool.append(world.create_item("Honey Orbs"))
+            itempool.append(world.create_item("Water Orbs"))
+            itempool.append(world.create_item("Red Quatrefoils"))
+            itempool.append(world.create_item("Green Quatrefoils"))
+            itempool.append(world.create_item("Honey"))
+            itempool.append(world.create_item("Water"))
+
+        itempool.append(world.create_item("Gravity Fists"))
+        itempool.append(world.create_item("Gravity Anchors"))
+    elif option_selected == 2:
+        # Gravity items are progressive.
+        if world.options.gravity_groups.value:
+            itempool += [world.create_item("Progressive Gravity Items") for _ in range(5)]
+        else:
+            itempool += [world.create_item("Progressive Gravity Items") for _ in range(8)]
+    elif option_selected == 3:
+        # Gravity items are grouped.
+        itempool.append(world.create_item("Gravity Items"))
+    elif option_selected == 4:
+        # Gravity items are precollected.
+        world.push_precollected(world.create_item("Gravity Items"))

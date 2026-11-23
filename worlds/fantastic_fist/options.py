@@ -406,6 +406,19 @@ class BossBlocks(Choice):
 
     default = option_default
 
+class BossBlockGroups(Toggle):
+    """
+    This option only affects Boss Blocks if they are separated or progressive.
+    Groups together boss blocks based on whether they are star or heart blocks.
+    Standard Star Blocks + Yellow Star Blocks + Blue Star Blocks -> Star Blocks
+    Standard Heart Blocks + Sliding Heart Blocks + Delayed Heart Blocks -> Heart Blocks
+    """
+
+    display_name = "Boss Block Groups"
+
+    default = True
+
+
 class PopBlocks(Choice):
     """
     Progressive order is:
@@ -580,7 +593,7 @@ class BlockLaunchers(Choice):
     Progressive order is:
     Standard Block Launchers -> Wing Block Launchers -> Pearl Block Launchers ->
     Ice Block Launchers -> Yellow Block Launchers -> Blue Block Launchers ->
-    Inverted Block Launchers -> Galactic Block Launchers -> Fire Block Launchers
+    Honey Block Launchers -> Galactic Block Launchers -> Fire Block Launchers
     """
 
     display_name = "Block Launchers"
@@ -710,7 +723,7 @@ class Keys(Choice):
     """
     Progressive order is:
     Standard Key Blocks -> Key Quartets ->
-    Ice Key Blocks -> Inverted Key Blocks
+    Ice Key Blocks -> Honey Key Blocks
     """
 
     display_name = "Keys"
@@ -726,8 +739,8 @@ class Keys(Choice):
 class GravityItems(Choice):
     """
     Progressive order is:
-    Up Gravity Flippers -> Down Gravity Flippers -> Up Gravity Fields ->
-    Down Gravity Fields -> Up Water -> Down Water ->
+    Honey Orbs -> Water Orbs -> Red Quatrefoils ->
+    Green Quatrefoils -> Honey -> Water ->
     Gravity Fists -> Gravity Anchors
     """
 
@@ -740,6 +753,19 @@ class GravityItems(Choice):
     option_precollected = 4
 
     default = option_default
+
+class GravityGroups(Toggle):
+    """
+    This option only affects Gravity Items if they are separated or progressive.
+    Groups together standard and honey versions of items.
+    Honey Orbs + Water Orbs -> Gravity Orbs
+    Red Quatrefoils + Green Quatrefoils -> Quatrefoils
+    Honey + Water -> Liquids
+    """
+
+    display_name = "Gravity Groups"
+
+    default = True
 
 class Lifts(Choice):
     """
@@ -760,7 +786,7 @@ class Lifts(Choice):
 class Semisolids(Choice):
     """
     Progressive order is:
-    Standard Semisolids -> Inverted Semisolids -> Toggle Semisolids
+    Green Semisolids -> Red Semisolids -> Toggle Semisolids
     """
 
     display_name = "Semisolids"
@@ -817,6 +843,7 @@ class FantasticFistOptions(PerGameCommonOptions):
     physics_blocks: PhysicsBlocks
     sliding_blocks: SlidingBlocks
     boss_blocks: BossBlocks
+    boss_block_groups: BossBlockGroups
     pop_blocks: PopBlocks
     bumpers: Bumpers
     switches: Switches
@@ -838,6 +865,7 @@ class FantasticFistOptions(PerGameCommonOptions):
     hive_blocks: HiveBlocks
     keys: Keys
     gravity_items: GravityItems
+    gravity_groups: GravityGroups
     lifts: Lifts
     semisolids: Semisolids
     vivis_flashlight: VivisFlashlight

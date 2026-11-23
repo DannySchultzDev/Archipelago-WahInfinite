@@ -7,6 +7,7 @@ from . import regions
 from BaseClasses import Location, Entrance
 from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
+from .options import GravityGroups, BossBlockGroups
 
 if TYPE_CHECKING:
     from .world import FantasticFistWorld
@@ -56,23 +57,35 @@ HAS_GALACTIC_SLIDING_BLOCKS = (Has("Sliding Blocks") |
                                 Has("Progressive Sliding Blocks", count = 5) | 
                                 Has("Galactic Sliding Blocks"))
 
-HAS_STANDARD_STAR_BLOCKS = (Has("Boss Blocks") | 
-                            Has("Progressive Boss Blocks", count = 1) | 
+HAS_STANDARD_STAR_BLOCKS = (Has("Boss Blocks") |
+                            Has("Progressive Boss Blocks", count = 1, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                            Has("Progressive Boss Blocks", count = 1) |
+                            Has("Star Blocks") |
                             Has("Standard Star Blocks"))
-HAS_YELLOW_STAR_BLOCKS = (Has("Boss Blocks") | 
-                            Has("Progressive Boss Blocks", count = 2) | 
+HAS_YELLOW_STAR_BLOCKS = (Has("Boss Blocks") |
+                            Has("Progressive Boss Blocks", count = 1, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                            Has("Progressive Boss Blocks", count = 2) |
+                            Has("Star Blocks") |
                             Has("Yellow Star Blocks"))
-HAS_BLUE_STAR_BLOCKS = (Has("Boss Blocks") | 
-                        Has("Progressive Boss Blocks", count = 3) | 
+HAS_BLUE_STAR_BLOCKS = (Has("Boss Blocks") |
+                        Has("Progressive Boss Blocks", count = 1, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                        Has("Progressive Boss Blocks", count = 3) |
+                        Has("Star Blocks") |
                         Has("Blue Star Blocks"))
-HAS_STANDARD_HEART_BLOCKS = (Has("Boss Blocks") | 
-                                Has("Progressive Boss Blocks", count = 4) | 
+HAS_STANDARD_HEART_BLOCKS = (Has("Boss Blocks") |
+                                Has("Progressive Boss Blocks", count = 2, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                                Has("Progressive Boss Blocks", count = 4) |
+                                Has("Heart Blocks") |
                                 Has("Standard Heart Blocks"))
-HAS_SLIDING_HEART_BLOCKS = (Has("Boss Blocks") | 
-                            Has("Progressive Boss Blocks", count = 5) | 
+HAS_SLIDING_HEART_BLOCKS = (Has("Boss Blocks") |
+                            Has("Progressive Boss Blocks", count = 2, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                            Has("Progressive Boss Blocks", count = 5) |
+                            Has("Heart Blocks") |
                             Has("Sliding Heart Blocks"))
-HAS_DELAYED_HEART_BLOCKS = (Has("Boss Blocks") | 
-                            Has("Progressive Boss Blocks", count = 6) | 
+HAS_DELAYED_HEART_BLOCKS = (Has("Boss Blocks") |
+                            Has("Progressive Boss Blocks", count = 2, options = [OptionFilter(BossBlockGroups, BossBlockGroups.option_true)]) |
+                            Has("Progressive Boss Blocks", count = 6) |
+                            Has("Heart Blocks") |
                             Has("Delayed Heart Blocks"))
 
 HAS_STANDARD_POP_BLOCKS = (Has("Pop Blocks") | 
@@ -175,7 +188,7 @@ HAS_BLUE_BLOCK_LAUNCHERS = (Has("Block Launchers") |
                             Has("Blue Block Launchers"))
 HAS_INVERTED_BLOCK_LAUNCHERS = (Has("Block Launchers") | 
                                 Has("Progressive Block Launchers", count = 7) | 
-                                Has("Inverted Block Launchers"))
+                                Has("Honey Block Launchers"))
 HAS_GALACTIC_BLOCK_LAUNCHERS = (Has("Block Launchers") | 
                                 Has("Progressive Block Launchers", count = 8) | 
                                 Has("Galactic Block Launchers"))
@@ -272,30 +285,44 @@ HAS_ICE_KEY_BLOCKS = (Has("Keys") |
                       Has("Ice Key Blocks"))
 HAS_INVERTED_KEY_BLOCKS = (Has("Keys") | 
                            Has("Progressive Keys", count = 4) | 
-                           Has("Inverted Key Blocks"))
+                           Has("Honey Key Blocks"))
 
-HAS_UP_GRAVITY_FLIPPERS = (Has("Gravity Items") | 
-                           Has("Progressive Gravity Items", count = 1) | 
-                           Has("Up Gravity Flippers"))
-HAS_DOWN_GRAVITY_FLIPPERS = (Has("Gravity Items") | 
-                             Has("Progressive Gravity Items", count = 2) | 
-                             Has("Down Gravity Flippers"))
-HAS_UP_GRAVITY_FIELDS = (Has("Gravity Items") | 
-                         Has("Progressive Gravity Items", count = 3) | 
-                         Has("Up Gravity Fields"))
-HAS_DOWN_GRAVITY_FIELDS = (Has("Gravity Items") | 
-                           Has("Progressive Gravity Items", count = 4) | 
-                           Has("Down Gravity Fields"))
-HAS_UP_WATER = (Has("Gravity Items") | 
-                Has("Progressive Gravity Items", count = 5) | 
-                Has("Up Water"))
-HAS_DOWN_WATER = (Has("Gravity Items") | 
-                  Has("Progressive Gravity Items", count = 6) | 
-                  Has("Down Water"))
-HAS_GRAVITY_FISTS = (Has("Gravity Items") | 
+HAS_UP_GRAVITY_FLIPPERS = (Has("Gravity Items") |
+                           Has("Progressive Gravity Items", count = 1, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                           Has("Progressive Gravity Items", count = 1) |
+                           Has("Gravity Orbs") |
+                           Has("Honey Orbs"))
+HAS_DOWN_GRAVITY_FLIPPERS = (Has("Gravity Items") |
+                             Has("Progressive Gravity Items", count = 1, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                             Has("Progressive Gravity Items", count = 2) |
+                             Has("Gravity Orbs") |
+                             Has("Water Orbs"))
+HAS_UP_GRAVITY_FIELDS = (Has("Gravity Items") |
+                         Has("Progressive Gravity Items", count = 2, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                         Has("Progressive Gravity Items", count = 3) |
+                         Has("Quatrefoils") |
+                         Has("Red Quatrefoils"))
+HAS_DOWN_GRAVITY_FIELDS = (Has("Gravity Items") |
+                           Has("Progressive Gravity Items", count = 2, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                           Has("Progressive Gravity Items", count = 4) |
+                           Has("Quatrefoils") |
+                           Has("Green Quatrefoils"))
+HAS_UP_WATER = (Has("Gravity Items") |
+                Has("Progressive Gravity Items", count = 3, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                Has("Progressive Gravity Items", count = 5) |
+                Has("Liquids") |
+                Has("Honey"))
+HAS_DOWN_WATER = (Has("Gravity Items") |
+                  Has("Progressive Gravity Items", count = 3, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
+                  Has("Progressive Gravity Items", count = 6) |
+                  Has("Liquids") |
+                  Has("Water"))
+HAS_GRAVITY_FISTS = (Has("Gravity Items") |
+                     Has("Progressive Gravity Items", count = 4, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
                      Has("Progressive Gravity Items", count = 7) | 
                      Has("Gravity Fists"))
-HAS_GRAVITY_ANCHORS = (Has("Gravity Items") | 
+HAS_GRAVITY_ANCHORS = (Has("Gravity Items") |
+                       Has("Progressive Gravity Items", count = 5, options = [OptionFilter(GravityGroups, GravityGroups.option_true)]) |
                        Has("Progressive Gravity Items", count = 8) | 
                        Has("Gravity Anchors"))
 
@@ -311,17 +338,17 @@ HAS_HIVE_LIFTS = (Has("Lifts") |
 
 HAS_STANDARD_SEMISOLIDS = (Has("Semisolids") | 
                            Has("Progressive Semisolids", count = 1) | 
-                           Has("Standard Semisolids"))
+                           Has("Green Semisolids"))
 HAS_INVERTED_SEMISOLIDS = (Has("Semisolids") | 
                            Has("Progressive Semisolids", count = 2) | 
-                           Has("Inverted Semisolids"))
+                           Has("Red Semisolids"))
 HAS_TOGGLE_SEMISOLIDS = (Has("Semisolids") | 
                          Has("Progressive Semisolids", count = 3) | 
                          Has("Toggle Semisolids"))
 
 HAS_ON_OFF_BLOCKS = Has("On Off Blocks")
 HAS_TIMER_BUTTONS = Has("Timer Buttons")
-HAS_TOGGLE_FLOWERS = Has("Toggle Flowers")
+HAS_TOGGLE_FLOWERS = Has("Briarbrush Flowers")
 HAS_TETHERS = Has("Tethers")
 HAS_ICICLES = Has("Icicles")
 HAS_GLASS_BLOCKS = Has("Glass Blocks")
